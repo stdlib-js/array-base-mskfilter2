@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/array-base-mskfilter2",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Apply a mask to two provided input arrays in a single pass.",
   "license": "Apache-2.0",
   "author": {
