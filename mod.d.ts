@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2025 The Stdlib Authors.
@@ -16,22 +16,19 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-var resolveGetter = require( '@stdlib/array-base-resolve-getter' );
-
-
-// MAIN //
+import { Collection } from '@stdlib/types/array';
 
 /**
 * Returns new arrays by applying a mask to two provided input arrays in a single pass.
 *
-* @param {Collection} x - first input array
-* @param {Collection} y - second input array
-* @param {Collection} mask - mask array
-* @returns {Array<Array>} output arrays
+* @param x - first input array
+* @param y - second input array
+* @param mask - mask array
+* @returns output arrays
 *
 * @example
 * var x = [ 1, 2, 3, 4 ];
@@ -41,32 +38,9 @@ var resolveGetter = require( '@stdlib/array-base-resolve-getter' );
 * var out = mskfilter2( x, y, mask );
 * // returns [ [ 2, 4 ], [ 6, 8 ] ]
 */
-function mskfilter2( x, y, mask ) {
-	var xget;
-	var yget;
-	var mget;
-	var o1;
-	var o2;
-	var i;
-
-	// Resolve accessors for retrieving array elements:
-	xget = resolveGetter( x );
-	yget = resolveGetter( y );
-	mget = resolveGetter( mask );
-
-	// Extract each desired element from the provided arrays...
-	o1 = [];
-	o2 = [];
-	for ( i = 0; i < x.length; i++ ) {
-		if ( mget( mask, i ) ) {
-			o1.push( xget( x, i ) ); // use `Array#push` to ensure "fast" elements
-			o2.push( yget( y, i ) );
-		}
-	}
-	return [ o1, o2 ];
-}
+declare function mskfilter2<T = unknown, U = unknown>( x: Collection<T>, y: Collection<U>, mask: Collection ): [ Array<T>, Array<U> ];
 
 
 // EXPORTS //
 
-module.exports = mskfilter2;
+export = mskfilter2;
